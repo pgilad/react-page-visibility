@@ -1,0 +1,44 @@
+{
+  "name": "react-page-visibility",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "test": "tape -r ./test/babel-register-setup test/*-test.js | faucet",
+    "test-browser": "npm run build && cat ./build/bundle.js | tape-run -r faucet",
+    "test-ci": "npm run build && zuul -- ./build/bundle.js",
+    "test-local": "npm run build && zuul --local -- ./build/bundle.js",
+    "test-phantom": "npm run build && zuul --phantom -- ./build/bundle.js"
+  },
+  "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-node5": "^11.0.2",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "babel-tape-runner": "^2.0.1",
+    "enzyme": "^2.2.0",
+    "eslint": "^2.8.0",
+    "eslint-plugin-react": "^5.0.1",
+    "expect.js": "^0.3.1",
+    "faucet": "0.0.1",
+    "jsdom": "^8.4.1",
+    "phantomjs-prebuilt": "^2.1.7",
+    "react-addons-test-utils": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "tape": "^4.5.1",
+    "tape-run": "^2.1.3",
+    "webpack": "^1.13.0",
+    "zuul": "^3.10.1"
+  },
+  "dependencies": {
+    "react": "^15.0.1"
+  }
+}
