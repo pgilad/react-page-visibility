@@ -1,50 +1,16 @@
 import React from 'react';
 
-const hasDocument = typeof document !== 'undefined';
-const isSupported = hasDocument && Boolean(document.addEventListener);
-
-const vendorEvents = [{
-    hidden: 'hidden',
-    event: 'visibilitychange',
-    state: 'visibilityState'
-}, {
-    hidden: 'webkitHidden',
-    event: 'webkitvisibilitychange',
-    state: 'webkitVisibilityState'
-}, {
-    hidden: 'mozHidden',
-    event: 'mozvisibilitychange',
-    state: 'mozVisibilityState'
-}, {
-    hidden: 'msHidden',
-    event: 'msvisibilitychange',
-    state: 'msVisibilityState'
-}, {
-    hidden: 'oHidden',
-    event: 'ovisibilitychange',
-    state: 'oVisibilityState'
-}];
-
-const visibility = (() => {
-    if (!isSupported) {
-        return null;
-    }
-    for (let i = 0; i < vendorEvents.length; i++) {
-        const event = vendorEvents[i];
-        if (event.hidden in document) {
-            return event;
-        }
-    }
-    // otherwise it's not supported
-    return null;
-})();
+import { isSupported, visibility, getVisibilityState } from './visibility';
 
 export default React.createClass({
     displayName: 'PageVisibility',
     getInitialState() {
+        if (isSupported && visibility) {
+            return getVisibilityState(visibility);
+        }
         return {
-            documentHidden: false,
-            visibilityState: 'visible'
+            documentHidden: null,
+            visibilityState: null
         };
     },
     componentWillMount() {
