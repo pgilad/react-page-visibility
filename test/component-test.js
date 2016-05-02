@@ -2,9 +2,17 @@ import './setup';
 
 import React from 'react';
 import test from 'tape';
-import { shallow } from 'enzyme';
+import { shallow, render } from 'enzyme';
 
 import PageVisibility from '../index';
+
+const Child = props => {
+    const { documentHidden, visibilityState } = props;
+    return <div>
+        <p>{documentHidden}</p>
+        <p>{visibilityState}</p>
+    </div>;
+};
 
 test('PageVisibility component', t => {
     t.test('render the component', t => {
@@ -46,5 +54,17 @@ test('PageVisibility component', t => {
                 <div />
             </PageVisibility>
         ), /Invariant Violation/);
+    });
+
+    t.test('render props in child', t => {
+        t.plan(2);
+        const result = shallow(
+            <PageVisibility>
+                <Child />
+            </PageVisibility>
+        );
+        const child = result.find(Child);
+        t.equal(child.length, 1);
+        t.equal(child.html(), '<div><p></p><p>visible</p></div>');
     });
 });
