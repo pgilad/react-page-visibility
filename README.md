@@ -10,7 +10,7 @@ See more classic use-cases in [MDN Page Visibility API](https://developer.mozill
 Well now you can react (Pun intended) to your app being in the background and invisible by conserving bandwidth and GPU calculations with ease.
 Introduction **React Page Visibility**:
 
-- A React higher order component that wraps the page visibility API
+- A React [higher order component](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e) that wraps the page visibility API
 - Cross-browser support (Yes, even IE and Safari)
 - Safe fallback if browser does not support it
 - Can be used multiple times anywhere in your application without side effects
@@ -64,7 +64,7 @@ export default React.createClass({
 
 ## API
 
-`react-page-visibility` is an [HOC](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e) which **requires** you to pass it an `onChange` function:
+`react-page-visibility` is an higher order component which **requires** you to pass it an `onChange` function:
 
 `onChange(handler)`
 
@@ -75,7 +75,7 @@ Where `handler` is the callback to run when the `visibilityState` of the documen
 - `visibilityState` is a String and can be one of `visible`, `hidden`, `prerender`, `unloaded` (if your browser supports those)
 - `documentHidden` is a Boolean indicating whether document is considered hidden to the user.
 
-See [MDN Properties overview](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API#Properties_overview)
+See [MDN Page Visibility API Properties overview](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API#Properties_overview)
 
 ## License
 
