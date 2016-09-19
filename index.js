@@ -1,17 +1,11 @@
 import React from 'react';
 
-import { isSupported, visibility, getVisibilityState } from './visibility';
+import { isSupported, visibility } from './visibility';
 
 export default React.createClass({
     displayName: 'PageVisibility',
-    getInitialState() {
-        if (isSupported && visibility) {
-            return getVisibilityState(visibility);
-        }
-        return {
-            documentHidden: null,
-            visibilityState: null
-        };
+    propTypes: {
+        onChange: React.PropTypes.func.isRequired,
     },
     componentWillMount() {
         if (!isSupported || !visibility) {
@@ -27,17 +21,16 @@ export default React.createClass({
         document.removeEventListener(visibility.event, this.handleVisibilityChange);
     },
     handleVisibilityChange() {
+        const { onChange } = this.props;
         const { hidden, state } = visibility;
-        this.setState({
-            visibilityState: document[state],
-            documentHidden: document[hidden]
-        });
+
+        onChange(document[state], document[hidden]);
     },
     render() {
         if (!this.props.children) {
             return null;
         }
-        const children = React.Children.only(this.props.children);
-        return React.cloneElement(children, this.state);
+        const child = React.Children.only(this.props.children);
+        return React.cloneElement(child);
     }
 });
