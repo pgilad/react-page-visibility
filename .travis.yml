@@ -3,6 +3,7 @@ language: node_js
 node_js:
     - stable
     - node
+script: npm run test-ci
 notifications:
     email:
         on_success: never
