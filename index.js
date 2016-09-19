@@ -37,7 +37,7 @@ export default React.createClass({
         if (!this.props.children) {
             return null;
         }
-        var children = React.Children.only(this.props.children);
+        const children = React.Children.only(this.props.children);
         return React.cloneElement(children, this.state);
     }
 });

@@ -22,37 +22,22 @@ test('PageVisibility component', t => {
         t.equal(result.length, 1);
     });
 
-    t.test('correctly renders direct child', t => {
-        t.plan(2);
-        const result = shallow(
-            <PageVisibility>
-                <div>Only 1</div>
-            </PageVisibility>
-        );
-        t.equal(result.length, 1);
-        t.equal(result.find('div').length, 1);
-    });
-
-    t.test('correctly renders nested children', t => {
-        t.plan(2);
-        const result = shallow(
-            <PageVisibility>
-                <div>
-                    <p>Multiple ps</p>
-                    <p>Multiple ps</p>
-                </div>
-            </PageVisibility>
-        );
-        t.equal(result.find('div').length, 1);
-        t.equal(result.find('div').find('p').length, 2);
-    });
-
     t.test('throw if trying to render multiple direct children', t => {
         t.plan(1);
         t.throws(() => shallow(
             <PageVisibility>
                 <div />
                 <div />
+            </PageVisibility>
+        ), /Invariant Violation/);
+    });
+
+    t.test('throw if trying to render multiple custom direct children', t => {
+        t.plan(1);
+        t.throws(() => shallow(
+            <PageVisibility>
+                <Child />
+                <Child />
             </PageVisibility>
         ), /Invariant Violation/);
     });
@@ -71,5 +56,19 @@ test('PageVisibility component', t => {
         t.equal(child.html(),
                 `<div><p>${hidden}</p><p>${state.visibilityState}</p></div>`,
                 'child dom should be equal');
+    });
+
+    t.test('render props in child with correct props', t => {
+        t.plan(2);
+        const result = shallow(
+            <PageVisibility>
+                <Child />
+            </PageVisibility>
+        );
+        const child = result.find(Child);
+        const props = child.props();
+
+        t.equal(props.documentHidden, true);
+        t.equal(props.visibilityState, 'prerender');
     });
 });
