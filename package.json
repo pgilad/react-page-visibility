@@ -1,7 +1,7 @@
 {
   "name": "react-page-visibility",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Declarative, nested, stateful, isomorphic page visibility for React",
   "main": "index.js",
   "files": [
     "index.js",
