@@ -5,7 +5,7 @@
 
 Are you polling your Backend on an interval basis? Are you running animations? What do you do if your tab is no longer visible?
 
-See more classic use-cases in [MDN Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API#Use_cases)
+See more classic use-cases in [MDN Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API#Use_cases).
 
 Well now you can react (Pun intended) to your app being in the background and invisible by conserving bandwidth and GPU calculations with ease.
 Introduction **React Page Visibility**:
