@@ -1,6 +1,8 @@
 # React Page Visibility
 > Declarative, nested, stateful, isomorphic page visibility for React
 
+[![Build Status](http://img.shields.io/travis/pgilad/react-page-visibility.svg?style=flat)](https://travis-ci.org/pgilad/react-page-visibility)
+
 ## Motivation
 
 Are you polling your Backend on an interval basis? Are you running animations? What do you do if your tab is no longer visible?
