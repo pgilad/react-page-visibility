@@ -13,7 +13,19 @@ Introduction **React Page Visibility**:
 - A React higher order component that wraps the page visibility API
 - Cross-browser support (Yes, even IE and Safari)
 - Safe fallback if browser does not support it
+- Can be used multiple times anywhere in your application without side effects
 - Lets you decide how to handle the page being invisible and turning visible again
+
+### Why use a React component and not a helper function?
+
+Because React is cool. 'Nuff said.
+
+But really, why not use a helper function?
+Because you will then need to `addEventListener` and `removeEventListener` in your component lifecycle and that gets tedious.
+
+Also, every time you use it you will need to check if your user's browser supports it and that gets tedious too.
+
+Instead with `react-page-visibility` everything is taken care of for you.
 
 ## Installation
 
