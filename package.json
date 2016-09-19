@@ -17,7 +17,7 @@
     "build": "webpack",
     "test": "tape -r ./test/babel-register-setup test/*-test.js | faucet",
     "test-browser": "npm run build && cat ./build/bundle.js | tape-run -r faucet",
-    "test-ci": "npm run build && zuul -- ./build/bundle.js",
+    "test-ci": "npm run build && zuul --no-coverage --browser-output-timeout 15000 --concurrency 1 -- ./build/bundle.js",
     "test-local": "npm run build && zuul --local -- ./build/bundle.js",
     "test-phantom": "npm run build && zuul --phantom -- ./build/bundle.js"
   },

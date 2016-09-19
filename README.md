@@ -1,7 +1,7 @@
 # React Page Visibility
 > Declarative, nested, stateful, isomorphic page visibility for React
 
-[![Build Status](http://img.shields.io/travis/pgilad/react-page-visibility.svg?style=flat)](https://travis-ci.org/pgilad/react-page-visibility)
+[![Build Status](https://travis-ci.org/pgilad/react-page-visibility.svg?branch=master)](https://travis-ci.org/pgilad/react-page-visibility)
 
 ## Motivation
 
