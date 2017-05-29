@@ -1,27 +1,16 @@
 module.exports = {
-    entry: './test/component-test.js',
+    devtool: 'source-map',
+    entry: './src',
     output: {
-        path: __dirname + '/build',
-        filename: 'bundle.js'
+        filename: 'react-page-visibility.js',
+        library: 'react-page-visibility',
+        libraryTarget: 'umd',
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
+            loader: 'babel-loader',
             exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['react', 'es2015']
-            }
         }]
-    },
-    externals: {
-        'cheerio': 'window',
-        'jsdom': 'window',
-        'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': 'window',
-    },
-    node: {
-        fs: 'empty'
     }
 };

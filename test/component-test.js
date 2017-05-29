@@ -4,7 +4,7 @@ import React from 'react';
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import PageVisibility from '../index';
+import PageVisibility from '../src';
 
 const noop = function () {};
 
