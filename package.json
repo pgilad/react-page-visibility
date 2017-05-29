@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "npm run build:es && npm run build:umd ",
-    "build:es": "babel src --out-dir lib/ --source-maps",
+    "build:es": "node_modules/.bin/babel src --out-dir lib/ --source-maps",
     "build:test": "node_modules/.bin/webpack --config webpack.test.config.js",
     "build:umd": "node_modules/.bin/webpack",
     "lint": "node_modules/.bin/eslint src",
