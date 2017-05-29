@@ -42,7 +42,6 @@
     "enzyme": "^2.8.2",
     "eslint": "^3.5.0",
     "eslint-plugin-react": "^6.2.2",
-    "expect.js": "^0.3.1",
     "faucet": "0.0.1",
     "jsdom": "^9.5.0",
     "phantomjs-prebuilt": "^2.1.7",
