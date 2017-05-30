@@ -5,15 +5,20 @@
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
   "keywords": "react, components, visibility, page, higher-order, browser",
-  "main": "react-page-visibility",
-  "module": "lib/index",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
-    "prebuild": "mkdir -p dist",
-    "build": "NODE_ENV=production babel index.js > dist/react-page-visibility.js",
+    "build": "NODE_ENV=production babel src -d dist",
+    "clean": "rm -rf dist",
     "lint": "eslint index.js",
+    "prepublish": "npm run lint && npm run clean && npm run build",
     "test": "NODE_ENV=test tape -r babel-register test/spec.js | faucet"
   },
   "license": "MIT",
