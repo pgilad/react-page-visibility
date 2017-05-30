@@ -37,6 +37,6 @@ export default class PageVisibility extends Component {
 
 PageVisibility.displayName = 'PageVisibility';
 
-PageVisibility.PropTypes = {
+PageVisibility.propTypes = {
     onChange: PropTypes.func.isRequired
 };
