@@ -2,4 +2,8 @@
 /node_modules
 /npm-debug.log
 /tmp
-/build
+/lib
+
+react-page-visibility.js
+react-page-visibility.js.map
+react-page-visibility.test.js

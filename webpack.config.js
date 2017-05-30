@@ -1,27 +1,37 @@
+const path = require('path');
+const webpack = require('webpack');
+
+const src = path.join(__dirname, 'src');
+
 module.exports = {
-    entry: './test/component-test.js',
+    devtool: 'source-map',
+    entry: src,
     output: {
-        path: __dirname + '/build',
-        filename: 'bundle.js'
+        filename: 'react-page-visibility.js',
+        library: 'react-page-visibility',
+        libraryTarget: 'umd',
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['react', 'es2015']
-            }
+            loader: 'babel-loader',
+            exclude: /node_modules/
         }]
     },
     externals: {
-        'cheerio': 'window',
-        'jsdom': 'window',
-        'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': 'window',
+        'prop-types': 'prop-types',
+        react: {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react'
+        }
     },
-    node: {
-        fs: 'empty'
-    }
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        })
+    ]
 };
