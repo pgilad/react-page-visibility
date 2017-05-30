@@ -8,7 +8,10 @@ export default class PageVisibility extends Component {
         if (!isSupported || !visibility) {
             return;
         }
+
+        this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
         this.isListening = true;
+
         document.addEventListener(visibility.event, this.handleVisibilityChange);
     }
 
