@@ -1,1 +1,11 @@
-/src
+.babelrc
+.editorconfig
+.eslintrc
+.travis.yml
+.zuul.yml
+
+webpack.config.js
+webpack.test.config.js
+
+src/
+test/
