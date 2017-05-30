@@ -1,3 +1,6 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 const hasDocument = typeof document !== 'undefined';
 const vendorEvents = [{
     hidden: 'hidden',
@@ -43,3 +46,44 @@ export const getVisibilityState = ({ hidden, state }) => {
         visibilityState: document[state],
     };
 };
+
+class PageVisibility extends Component {
+    componentWillMount() {
+        if (!isSupported || !visibility) {
+            return;
+        }
+
+        this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+        this.isListening = true;
+
+        document.addEventListener(visibility.event, this.handleVisibilityChange);
+    }
+
+    componentWillUnmount() {
+        if (!this.isListening) {
+            return;
+        }
+        document.removeEventListener(visibility.event, this.handleVisibilityChange);
+    }
+
+    handleVisibilityChange() {
+        const { hidden, state } = visibility;
+        this.props.onChange(document[state], document[hidden]);
+    }
+
+    render() {
+        if (!this.props.children) {
+            return null;
+        }
+
+        return React.Children.only(this.props.children);
+    }
+}
+
+PageVisibility.displayName = 'PageVisibility';
+
+PageVisibility.propTypes = {
+    onChange: PropTypes.func.isRequired
+};
+
+export default PageVisibility;
