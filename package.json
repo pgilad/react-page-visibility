@@ -4,7 +4,7 @@
   "description": "Declarative, nested, stateful, isomorphic page visibility for React",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
-  "keywords": "react, components, visibility, page, higher-order, browser",
+  "keywords": "react, components, visibility, page, higher-order, browser, react-component",
   "main": "dist/index.js",
   "module": "src/index.js",
   "files": [
