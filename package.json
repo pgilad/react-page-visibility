@@ -21,7 +21,8 @@
     "build:es2015": "BABEL_ENV=es2015 babel src/index.js -o dist/index.js",
     "clean": "rm -rf dist && mkdir -p dist",
     "lint": "eslint src/",
-    "prepublishOnly": "npm run lint && npm run clean && npm run build:main && npm run build:module && npm run build:es2015",
+    "build": "npm run clean && npm run build:main && npm run build:module && npm run build:es2015",
+    "prepublishOnly": "npm run lint && npm test && npm run clean && npm run build",
     "test": "BABEL_ENV=test tape -r babel-register test/spec.js | faucet"
   },
   "license": "MIT",
