@@ -5,8 +5,9 @@
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
   "keywords": "react, components, visibility, page, higher-order, browser, react-component",
-  "main": "dist/index.js",
-  "module": "src/index.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es5.js",
+  "es2015": "dist/index.js",
   "files": [
     "dist",
     "src"
@@ -15,10 +16,12 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "build": "BABEL_ENV=production babel src -d dist",
-    "clean": "rm -rf dist",
+    "build:main": "BABEL_ENV=main babel src/index.js -o dist/index.umd.js",
+    "build:module": "BABEL_ENV=module babel src/index.js -o dist/index.es5.js",
+    "build:es2015": "BABEL_ENV=es2015 babel src/index.js -o dist/index.js",
+    "clean": "rm -rf dist && mkdir -p dist",
     "lint": "eslint src/",
-    "prepublishOnly": "npm run lint && npm run clean && npm run build",
+    "prepublishOnly": "npm run lint && npm run clean && npm run build:main && npm run build:module && npm run build:es2015",
     "test": "BABEL_ENV=test tape -r babel-register test/spec.js | faucet"
   },
   "license": "MIT",

@@ -1,7 +1,13 @@
 {
     "env": {
-        "production": {
+        "main": {
             "presets": [["es2015", { "modules": "umd" }], "react"]
+        },
+        "module": {
+            "presets": [["es2015", { "modules": false }], "react"]
+        },
+        "es2015": {
+            "presets": ["react"]
         },
         "test": {
             "presets": ["es2015", "react"]
