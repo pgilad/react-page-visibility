@@ -1,6 +1,6 @@
 {
   "name": "react-page-visibility",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Declarative, nested, stateful, isomorphic page visibility for React",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
