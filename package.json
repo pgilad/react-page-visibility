@@ -23,27 +23,28 @@
     "lint": "eslint src/",
     "build": "npm run clean && npm run build:main && npm run build:module && npm run build:es2015",
     "prepublishOnly": "npm run lint && npm test && npm run clean && npm run build",
-    "test": "BABEL_ENV=test tape -r babel-register test/spec.js | faucet"
+    "test": "BABEL_ENV=test tape -r ./test/setup.js test/spec.js | faucet"
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "enzyme": "^2.8.2",
-    "eslint": "^3.19.0",
-    "eslint-plugin-react": "^7.0.1",
-    "faucet": "0.0.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4",
-    "tape": "^4.5.1"
+    "babel-register": "^6.26.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.14.0",
+    "eslint-plugin-react": "^7.5.1",
+    "faucet": "^0.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0",
+    "tape": "^4.8.0"
   },
   "peerDependencies": {
-    "react": "^15.5.4"
+    "react": "^15.5.4 || ^16.0.0"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.6.0"
   }
 }
