@@ -1,8 +1,9 @@
 import React from 'react';
+import sinon from 'sinon';
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import PageVisibility from '../src/index';
+import PageVisibility  from '../src/index';
 
 const noop = function () {};
 
@@ -38,6 +39,18 @@ test('PageVisibility component', t => {
                 <Child />
             </PageVisibility>
         ), /Invariant Violation/);
+        t.end();
+    });
+
+    t.test('allow children as function', t => {
+        const stub = sinon.stub();
+        const wrapper = shallow(<PageVisibility>{stub}</PageVisibility>);
+
+        t.equal(wrapper.length, 1);
+        t.equal(stub.callCount, 1);
+        t.equal(stub.firstCall.args.length, 2);
+        t.looseEquals(stub.firstCall.args, [false, 'prerender']);
+
         t.end();
     });
 });

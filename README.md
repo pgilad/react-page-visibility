@@ -37,47 +37,46 @@ $ npm install --save react-page-visibility
 
 ## Usage
 
-A rotating carousal component that will be passed down a prop of whether to rotate the images
-or not based on whether page is visible.
+A rotating carousal component that will be passed down a prop of whether to rotate the images or not based on whether page is visible.
+
+### Using `onChange` callback
 
 ```js
+import React from 'react';
 import PageVisibility from 'react-page-visibility';
 
-export default React.createClass({
-    getInitialState() {
-        return {
-            visible: true
-        },
-    },
-    handleVisibilityChange(visibilityState, documentHidden) {
-        this.setState({ visible: !documentHidden });
-    },
-    render() {
-        const { visible } = this.state;
+class AppContainer extends React.Component {
+    state = {
+        rotate: true
+    };
 
+    handleVisibilityChange = isVisible => {
+        this.setState({ rotate: !isVisible });
+    }
+
+    render() {
         return (
             <PageVisibility onChange={this.handleVisibilityChange}>
-                <RotatingCarousel rotate={visible} />
+                <RotatingCarousel rotate={this.state.rotate} />
             </PageVisibility>
         );
-    },
-});
+    }
+}
 ```
 
-## Function as children usage
+## Using `children` as function callback
 
 ```js
+import React from 'react';
 import PageVisibility from 'react-page-visibility';
 
-export default React.createClass({
-    render() {
-        return (
-            <PageVisibility>
-                {visible => <RotatingCarousel rotate={visible} />}
-            </PageVisibility>
-        );
-    },
-});
+const AppContainer = () => {
+    return (
+        <PageVisibility>
+            { isVisible => <RotatingCarousel rotate={isVisible} /> }
+        </PageVisibility>
+    );
+}
 ```
 
 ## API
@@ -88,16 +87,17 @@ export default React.createClass({
 
 Where `handler` is the callback to run when the `visibilityState` of the document changes:
 
-`Function handler(<String> visibilityState, <Boolean> documentHidden)`
+`Function handler(<Boolean> isVisible, <String> visibilityState)`
 
+- `isVisible` is a Boolean indicating whether document is considered visible to the user or not.
 - `visibilityState` is a String and can be one of `visible`, `hidden`, `prerender`, `unloaded` (if your browser supports those)
-- `documentHidden` is a Boolean indicating whether document is considered hidden to the user.
 
-Or you can use [function as children](https://reactpatterns.com/#function-as-children) pattern, Where `children` is the callback to run when the `visibilityState` of the document changes.
+**Notice: previous versions had different arguments in the `handler`**
 
-`Function children(<Boolean> documentHidden)`
-- `documentHidden` is a Boolean indicating whether document is considered hidden to the user.
+Or you can use [function as children](https://reactpatterns.com/#function-as-children) pattern,
+where `children` is the callback to run when the `visibilityState` of the document changes.
 
+`Function children(<Boolean> isVisible, <String> visibilityState)`
 
 See [MDN Page Visibility API Properties overview](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API#Properties_overview)
 

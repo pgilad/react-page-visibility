@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const hasDocument = typeof document !== 'undefined';
@@ -47,51 +47,58 @@ export const getVisibilityState = ({ hidden, state }) => {
     };
 };
 
-class PageVisibility extends Component {
+const getHandlerArgs = () => {
+    const { hidden, state } = visibility;
+    return [!document[hidden], document[state]];
+};
+
+class PageVisibility extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            visible: true
+            isSupported: isSupported && visibility
         };
     }
 
     componentWillMount() {
-        if (!isSupported || !visibility) {
+        if (!this.state.isSupported) {
             return;
         }
 
         this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
-        this.isListening = true;
-
         document.addEventListener(visibility.event, this.handleVisibilityChange);
     }
 
     componentWillUnmount() {
-        if (!this.isListening) {
+        if (!this.state.isSupported) {
             return;
         }
         document.removeEventListener(visibility.event, this.handleVisibilityChange);
     }
 
     handleVisibilityChange() {
-        const { hidden, state } = visibility;
-
         if (typeof this.props.onChange === 'function') {
-            this.props.onChange(document[state], document[hidden]);
+            // propagate change to callback
+            this.props.onChange(...getHandlerArgs());
         }
-
-        this.setState({ visible: !document[hidden] });
+        if (typeof this.props.children === 'function') {
+            // we pass the props directly to the function as children
+            this.forceUpdate();
+        }
     }
 
     render() {
         if (!this.props.children) {
             return null;
         }
-
-        // Function as children pattern support
+        // function as children pattern support
         if (typeof this.props.children === 'function') {
-            return this.props.children(this.state.visible);
+            if (!this.state.isSupported) {
+                // don't pass any arguments if PageVisibility is not supported
+                return this.props.children();
+            }
+            return this.props.children(...getHandlerArgs());
         }
 
         return React.Children.only(this.props.children);
