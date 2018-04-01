@@ -48,6 +48,14 @@ export const getVisibilityState = ({ hidden, state }) => {
 };
 
 class PageVisibility extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            visible: true
+        };
+    }
+
     componentWillMount() {
         if (!isSupported || !visibility) {
             return;
@@ -68,12 +76,22 @@ class PageVisibility extends Component {
 
     handleVisibilityChange() {
         const { hidden, state } = visibility;
-        this.props.onChange(document[state], document[hidden]);
+
+        if (typeof this.props.onChange === 'function') {
+            this.props.onChange(document[state], document[hidden]);
+        }
+
+        this.setState({ visible: !document[hidden] });
     }
 
     render() {
         if (!this.props.children) {
             return null;
+        }
+
+        // Function as children pattern support
+        if (typeof this.props.children === 'function') {
+            return this.props.children(this.state.visible);
         }
 
         return React.Children.only(this.props.children);
@@ -83,7 +101,11 @@ class PageVisibility extends Component {
 PageVisibility.displayName = 'PageVisibility';
 
 PageVisibility.propTypes = {
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func,
+    children: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.func
+    ])
 };
 
 export default PageVisibility;

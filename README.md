@@ -64,9 +64,25 @@ export default React.createClass({
 });
 ```
 
+## Function as children usage
+
+```js
+import PageVisibility from 'react-page-visibility';
+
+export default React.createClass({
+    render() {
+        return (
+            <PageVisibility>
+                {visible => <RotatingCarousel rotate={visible} />}
+            </PageVisibility>
+        );
+    },
+});
+```
+
 ## API
 
-`react-page-visibility` is an higher order component which **requires** you to pass it an `onChange` function:
+`react-page-visibility` is an higher order component, you can pass to it an `onChange` function:
 
 `onChange(handler)`
 
@@ -76,6 +92,12 @@ Where `handler` is the callback to run when the `visibilityState` of the documen
 
 - `visibilityState` is a String and can be one of `visible`, `hidden`, `prerender`, `unloaded` (if your browser supports those)
 - `documentHidden` is a Boolean indicating whether document is considered hidden to the user.
+
+Or you can use [function as children](https://reactpatterns.com/#function-as-children) pattern, Where `children` is the callback to run when the `visibilityState` of the document changes.
+
+`Function children(<Boolean> documentHidden)`
+- `documentHidden` is a Boolean indicating whether document is considered hidden to the user.
+
 
 See [MDN Page Visibility API Properties overview](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API#Properties_overview)
 
