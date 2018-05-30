@@ -61,7 +61,7 @@ class PageVisibility extends React.Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (!this.state.isSupported) {
             return;
         }
