@@ -6,8 +6,7 @@ const Enzyme = require('enzyme');
 const { JSDOM } = require('jsdom');
 
 const jsdom = new JSDOM('<!doctype html><html><body><div id="main"></div></body></html>', {
-    beforeParse(window) {
-    },
+    beforeParse(window) {},
 });
 
 const { window } = jsdom;
