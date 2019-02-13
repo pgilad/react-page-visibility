@@ -2,7 +2,7 @@
   "name": "react-page-visibility",
   "version": "3.1.1",
   "description": "Declarative, nested, stateful, isomorphic page visibility for React",
-  "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
+  "author": "Gilad Peleg <gilad@giladpeleg.com> (https://www.giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
   "keywords": [
     "react",
@@ -28,15 +28,17 @@
     "build:module": "BABEL_ENV=module babel src/index.js -o dist/index.es5.js",
     "build:es2015": "BABEL_ENV=es2015 babel src/index.js -o dist/index.js",
     "clean": "rm -rf dist && mkdir -p dist",
-    "lint": "eslint src/",
+    "lint": "eslint src/ test/",
     "build": "npm run clean && npm run build:main && npm run build:module && npm run build:es2015",
-    "prepublishOnly": "npm run lint && npm test && npm run clean && npm run build",
-    "test": "BABEL_ENV=test tape -r ./test/setup.js test/spec.js | faucet",
-    "format": "prettier --write 'src/**/*.js' 'test/**/*.js'"
+    "prepublishOnly": "npm run lint && npm run format-check && npm test && npm run clean && npm run build",
+    "test": "BABEL_ENV=test tape -r ./test/setup.js test/spec.js",
+    "format": "prettier --write 'src/**/*.js' 'test/**/*.js'",
+    "format-check": "prettier --check 'src/**/*.js' 'test/**/*.js'"
   },
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
@@ -44,7 +46,6 @@
     "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^5.13.0",
     "eslint-plugin-react": "^7.12.4",
-    "faucet": "^0.0.1",
     "jsdom": "^13.2.0",
     "prettier": "^1.16.4",
     "react": "^16.8.1",

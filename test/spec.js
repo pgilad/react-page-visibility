@@ -2,6 +2,7 @@ import React from 'react';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import test from 'tape';
+import PropTypes from 'prop-types';
 
 import PageVisibility from '../src/index';
 
@@ -15,6 +16,11 @@ const Child = props => {
             <p>{visibilityState}</p>
         </div>
     );
+};
+
+Child.propTypes = {
+    documentHidden: PropTypes.bool,
+    visibilityState: PropTypes.string,
 };
 
 test('render the component', t => {

@@ -1,0 +1,10 @@
+# node_modules ignored by default
+.cache/
+.idea/
+.netlify/
+public/
+node_modules/
+src/generated/
+src/**/*.ts
+src/**/*.tsx
+dist/
