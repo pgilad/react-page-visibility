@@ -103,4 +103,4 @@ See [MDN Page Visibility API Properties overview](https://developer.mozilla.org/
 
 ## License
 
-MIT
+MIT © [Gilad Peleg](https://www.giladpeleg.com)
