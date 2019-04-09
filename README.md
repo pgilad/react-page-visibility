@@ -37,7 +37,7 @@ $ npm install --save react-page-visibility
 
 ## Usage
 
-A rotating carousal component that will be passed down a prop of whether to rotate the images or not based on whether page is visible.
+A rotating carousel component that will be passed down a prop of whether to rotate the images or not based on whether page is visible.
 
 ### Using `onChange` callback
 
