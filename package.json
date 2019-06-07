@@ -21,7 +21,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8"
   },
   "scripts": {
     "build:main": "BABEL_ENV=main babel src/index.js -o dist/index.umd.js",
@@ -47,7 +47,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.13.0",
     "jsdom": "^15.1.1",
-    "prettier": "^1.17.1",
+    "prettier": "^1.18.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
