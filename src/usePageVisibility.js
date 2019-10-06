@@ -1,14 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { getHandlerArgs, isSupported, visibility } from './utils';
 
 const isSupportedLocal = isSupported && visibility;
 
-function useCallbackOnVisibilityChange(onVisibilityChange) {
+function usePageVisibility() {
+    const [initiallyVisible] = getHandlerArgs();
+
+    const [isVisible, setIsVisible] = useState(initiallyVisible);
+
     useEffect(() => {
         if (isSupportedLocal) {
             const handler = () => {
-                onVisibilityChange(...getHandlerArgs());
+                const [currentlyVisisble] = getHandlerArgs();
+
+                setIsVisible(currentlyVisisble);
             };
 
             document.addEventListener(visibility.event, handler);
@@ -17,7 +23,9 @@ function useCallbackOnVisibilityChange(onVisibilityChange) {
                 document.removeEventListener(visibility.event, handler);
             };
         }
-    }, [onVisibilityChange]);
+    }, []);
+
+    return isVisible;
 }
 
-export default useCallbackOnVisibilityChange;
+export default usePageVisibility;

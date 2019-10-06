@@ -1,4 +1,4 @@
 import PageVisibility from './PageVisibility';
-export { default as useCallbackOnVisibilityChange } from './useCallbackOnVisibilityChange';
+export { default as usePageVisibility } from './usePageVisibility';
 
 export default PageVisibility;
