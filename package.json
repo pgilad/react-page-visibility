@@ -4,6 +4,7 @@
   "description": "Declarative, nested, stateful, isomorphic page visibility for React",
   "author": "Gilad Peleg <gilad@giladpeleg.com> (https://www.giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
+  "sideEffects": false,
   "keywords": [
     "react",
     "components",
@@ -13,9 +14,9 @@
     "browser",
     "react-component"
   ],
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es5.js",
-  "es2015": "dist/index.js",
+  "main": "dist/umd/index.js",
+  "module": "dist/es5/index.js",
+  "es2015": "dist/es2015/index.js",
   "files": [
     "dist",
     "src"
@@ -24,10 +25,10 @@
     "node": ">=8"
   },
   "scripts": {
-    "build:main": "BABEL_ENV=main babel src/index.js -o dist/index.umd.js",
-    "build:module": "BABEL_ENV=module babel src/index.js -o dist/index.es5.js",
-    "build:es2015": "BABEL_ENV=es2015 babel src/index.js -o dist/index.js",
-    "clean": "rm -rf dist && mkdir -p dist",
+    "build:main": "BABEL_ENV=main babel src -d dist/umd",
+    "build:module": "BABEL_ENV=module babel src -d dist/es5",
+    "build:es2015": "BABEL_ENV=es2015 babel src -d dist/es2015",
+    "clean": "rm -rf dist",
     "lint": "eslint src/ test/",
     "build": "npm run clean && npm run build:main && npm run build:module && npm run build:es2015",
     "prepublishOnly": "npm run lint && npm run format-check && npm test && npm run clean && npm run build",
