@@ -4,6 +4,7 @@
   "description": "Declarative, nested, stateful, isomorphic page visibility for React",
   "author": "Gilad Peleg <gilad@giladpeleg.com> (https://www.giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
+  "sideEffects": false,
   "keywords": [
     "react",
     "components",
