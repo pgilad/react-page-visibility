@@ -79,6 +79,19 @@ const AppContainer = () => {
 }
 ```
 
+## Using the `usePageVisibility` hook
+
+```js
+import React from 'react';
+import { usePageVisibility } from 'react-page-visibility';
+
+const AppContainer = () => {
+    const isVisible = usePageVisibility()
+
+    return <RotatingCarousel rotate={isVisible} />
+}
+```
+
 ## API
 
 `react-page-visibility` is an higher order component, you can pass to it an `onChange` function:
