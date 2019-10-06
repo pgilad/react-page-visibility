@@ -4,10 +4,10 @@ env:
     node: true
 settings:
     react:
-        version: '16.8'
+        version: detect
 extends:
-    - 'eslint:recommended'
-    - 'plugin:react/recommended'
+    - eslint:recommended
+    - plugin:react/recommended
 parser: babel-eslint
 parserOptions:
     ecmaFeatures:
@@ -17,7 +17,7 @@ parserOptions:
 plugins:
     - react
 rules:
-    indent: off
+    indent: 0
     linebreak-style:
         - error
         - unix
