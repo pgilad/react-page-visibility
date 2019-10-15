@@ -2,9 +2,9 @@
 .cache/
 .idea/
 .netlify/
-public/
+dist/
 node_modules/
-src/generated/
+public/
 src/**/*.ts
 src/**/*.tsx
-dist/
+src/generated/
