@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import PageVisibility from '../src/index';
 
-const noop = function() {};
+const noop = function () {};
 
 const Child = props => {
     const { documentHidden, visibilityState } = props;
@@ -38,7 +38,7 @@ test('throw if trying to render multiple direct children', t => {
                     <div />
                 </PageVisibility>
             ),
-        /Invariant Violation/
+        /React.Children.only expected to receive a single React element child/
     );
     t.end();
 });
@@ -52,7 +52,7 @@ test('throw if trying to render multiple custom direct children', t => {
                     <Child />
                 </PageVisibility>
             ),
-        /Invariant Violation/
+        /React.Children.only expected to receive a single React element child/
     );
     t.end();
 });

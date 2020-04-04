@@ -43,13 +43,6 @@ export const visibility = (() => {
     return null;
 })();
 
-export const getVisibilityState = ({ hidden, state }) => {
-    return {
-        documentHidden: document[hidden],
-        visibilityState: document[state],
-    };
-};
-
 export const getHandlerArgs = () => {
     const { hidden, state } = visibility;
     return [!document[hidden], document[state]];

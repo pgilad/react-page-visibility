@@ -4,7 +4,7 @@ import { getHandlerArgs, isSupported, visibility } from './utils';
 
 const isSupportedLocal = isSupported && visibility;
 
-function usePageVisibility() {
+const usePageVisibility = () => {
     const [initiallyVisible] = getHandlerArgs();
 
     const [isVisible, setIsVisible] = useState(initiallyVisible);
@@ -12,9 +12,9 @@ function usePageVisibility() {
     useEffect(() => {
         if (isSupportedLocal) {
             const handler = () => {
-                const [currentlyVisisble] = getHandlerArgs();
+                const [currentlyVisible] = getHandlerArgs();
 
-                setIsVisible(currentlyVisisble);
+                setIsVisible(currentlyVisible);
             };
 
             document.addEventListener(visibility.event, handler);
@@ -26,6 +26,6 @@ function usePageVisibility() {
     }, []);
 
     return isVisible;
-}
+};
 
 export default usePageVisibility;
