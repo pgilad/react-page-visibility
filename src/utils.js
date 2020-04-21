@@ -44,6 +44,7 @@ export const visibility = (() => {
 })();
 
 export const getHandlerArgs = () => {
+    if (!visibility) return [true, () => {}];
     const { hidden, state } = visibility;
     return [!document[hidden], document[state]];
 };
