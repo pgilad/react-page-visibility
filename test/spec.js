@@ -64,7 +64,8 @@ test('allow children as function', t => {
     t.equal(wrapper.length, 1);
     t.equal(stub.callCount, 1);
     t.equal(stub.firstCall.args.length, 2);
-    t.looseEquals(stub.firstCall.args, [false, 'prerender']);
+    t.equal(stub.firstCall.args[0], false);
+    t.equal(stub.firstCall.args[1], 'prerender');
 
     t.end();
 });
