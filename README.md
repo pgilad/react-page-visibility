@@ -39,6 +39,19 @@ $ npm install --save react-page-visibility
 
 A rotating carousel component that will be passed down a prop of whether to rotate the images or not based on whether page is visible.
 
+## Using the `usePageVisibility` hook
+
+```js
+import React from 'react';
+import { usePageVisibility } from 'react-page-visibility';
+
+const AppContainer = () => {
+    const isVisible = usePageVisibility()
+
+    return <RotatingCarousel rotate={isVisible} />
+}
+```
+
 ### Using `onChange` callback
 
 ```js
@@ -76,19 +89,6 @@ const AppContainer = () => {
             { isVisible => <RotatingCarousel rotate={isVisible} /> }
         </PageVisibility>
     );
-}
-```
-
-## Using the `usePageVisibility` hook
-
-```js
-import React from 'react';
-import { usePageVisibility } from 'react-page-visibility';
-
-const AppContainer = () => {
-    const isVisible = usePageVisibility()
-
-    return <RotatingCarousel rotate={isVisible} />
 }
 ```
 
