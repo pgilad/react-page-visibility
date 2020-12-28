@@ -1,10 +1,11 @@
+os: linux
+dist: focal
 language: node_js
 node_js:
     - '10'
-    - '11'
     - '12'
-    - '13'
     - '14'
+    - '15'
 cache: npm
 notifications:
     email: false
