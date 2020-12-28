@@ -8,7 +8,7 @@ import PageVisibility from '../src/index';
 
 const noop = function () {};
 
-const Child = props => {
+const Child = (props) => {
     const { documentHidden, visibilityState } = props;
     return (
         <div>
@@ -23,13 +23,13 @@ Child.propTypes = {
     visibilityState: PropTypes.string,
 };
 
-test('render the component', t => {
+test('render the component', (t) => {
     const result = shallow(<PageVisibility onChange={noop} />);
     t.equal(result.length, 1);
     t.end();
 });
 
-test('throw if trying to render multiple direct children', t => {
+test('throw if trying to render multiple direct children', (t) => {
     t.throws(
         () =>
             shallow(
@@ -43,7 +43,7 @@ test('throw if trying to render multiple direct children', t => {
     t.end();
 });
 
-test('throw if trying to render multiple custom direct children', t => {
+test('throw if trying to render multiple custom direct children', (t) => {
     t.throws(
         () =>
             shallow(
@@ -57,7 +57,7 @@ test('throw if trying to render multiple custom direct children', t => {
     t.end();
 });
 
-test('allow children as function', t => {
+test('allow children as function', (t) => {
     const stub = sinon.stub();
     const wrapper = shallow(<PageVisibility>{stub}</PageVisibility>);
 

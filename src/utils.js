@@ -33,8 +33,7 @@ export const visibility = (() => {
     if (!isSupported) {
         return null;
     }
-    for (let i = 0; i < vendorEvents.length; i++) {
-        const event = vendorEvents[i];
+    for (let event of vendorEvents) {
         if (event.hidden in document) {
             return event;
         }
@@ -44,7 +43,9 @@ export const visibility = (() => {
 })();
 
 export const getHandlerArgs = () => {
-    if (!visibility) return [true, () => {}];
+    if (!visibility) {
+        return [true, 'visible'];
+    }
     const { hidden, state } = visibility;
     return [!document[hidden], document[state]];
 };
