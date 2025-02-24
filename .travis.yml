@@ -1,11 +1,19 @@
 os: linux
-dist: focal
+dist: jammy
 language: node_js
 node_js:
-    - '10'
-    - '12'
-    - '14'
-    - '15'
-cache: npm
+    - '16'
+    - '18'
+    - '20'
+    - '22'
+cache:
+    npm: true
+    directories:
+        - $HOME/.npm
+
 notifications:
     email: false
+
+env:
+  global:
+    - NODE_ENV=test
