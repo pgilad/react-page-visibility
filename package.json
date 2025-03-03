@@ -5,6 +5,7 @@
   "author": "Gilad Peleg <gilad@giladpeleg.com> (https://www.giladpeleg.com)",
   "repository": "pgilad/react-page-visibility",
   "sideEffects": false,
+  "types": "./src/index.d.ts",
   "keywords": [
     "react",
     "components",
